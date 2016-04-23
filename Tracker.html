@@ -1,9 +1,17 @@
-<div class="menu">
+<div class="container">
+    <div class="menu">
+
+        <div class="panel panel-default">
+            <div class="panel-body">
+                {{user.name}} xxx
+                <a href>Logout</a>
+            </div>
+        </div>
+
+    </div>
+    <div class="workspace">
+        <ui-view></ui-view>
+    </div>
 
 </div>
-<div class="workspace">
-    <ui-view></ui-view>
-</div>
-
-{{test}}
 

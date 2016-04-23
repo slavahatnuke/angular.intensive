@@ -6,8 +6,7 @@ angular.module('Tracker', ['ui.router', 'ngResource'])
         $stateProvider
             .state('app', {
                 url: '/app',
-                templateUrl: 'Tracker.html',
-                controller: 'TrackerCtrl'
+                templateUrl: 'Tracker.html'
             })
             .state('app.signup', {
                 url: '/signup',
@@ -16,24 +15,19 @@ angular.module('Tracker', ['ui.router', 'ngResource'])
             })
 
     })
-    .controller('TrackerCtrl', function ($scope) {
-        $scope.test = 'ok'
+    .config(function ($httpProvider) {
+        $httpProvider.defaults.withCredentials = true;
     })
-    .controller('SignupCtrl', function ($scope, $resource) {
-
-        var url = 'http://angular.plus1generation.com/api/auth/signup';
-        var Signup = $resource(url, {}, {
-            xz: {method: 'XZ'}
+    .factory('resource', function ($resource) {
+        var baseUrl = 'http://angular.plus1generation.com';
+        return function (url) {
+            arguments[0] = baseUrl + url;
+            return $resource.apply($resource, arguments);
+        };
+    })
+    .run(function ($rootScope, UserService) {
+        UserService.load().then(function (user) {
+            $rootScope.user = user;
         });
-
-        $scope.user = {};
-        $scope.signup = function () {
-
-            new Signup($scope.user).$save().then(function () {
-                console.log(arguments);
-            });
-
-            console.log($scope.user);
-        }
     })
 ;
