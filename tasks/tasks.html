@@ -1,10 +1,14 @@
 <pre>{{tasks}}</pre>
+
+<task-editor project-id="projectId"></task-editor>
+
 <div ng-repeat="task in tasks">
     <hr/>
     <div class="pull-right">
-        <a class="btn btn-default">Edit</a>
+
         <a class="btn btn-danger" ng-click="remove(task)">Delete</a>
         <a class="btn btn-primary">Show</a>
+        <task-editor task="task"></task-editor>
     </div>
     <div>Name: {{task.name}}</div>
     <div>Description: {{task.description}}</div>
