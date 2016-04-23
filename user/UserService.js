@@ -28,6 +28,12 @@ angular.module('Tracker')
                     self.user = null;
                 })
             },
+            login: function (user) {
+                return Auth.login(user).$promise.then(function (user) {
+                    self.user = user;
+                    return user;
+                });
+            },
             load: function () {
                 return Me.get().$promise.then(function (user) {
                     self.user = user;
