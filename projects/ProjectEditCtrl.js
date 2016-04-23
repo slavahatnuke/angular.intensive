@@ -5,6 +5,8 @@ angular.module('Tracker')
         $scope.save = function () {
             $scope.project.$save().then(function () {
                 $state.go('app.projects.list');
+            }, function (response) {
+                $scope.error = response.data;
             })
         }
     })
