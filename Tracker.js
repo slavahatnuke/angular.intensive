@@ -22,6 +22,11 @@ angular.module('Tracker', ['ui.router', 'ngResource'])
                 templateUrl: 'user/login.html',
                 controller: 'LoginCtrl'
             })
+            .state('app.projects', {
+                url: '/projects',
+                templateUrl: 'projects/projects.html',
+                controller: 'ProjectsCtrl'
+            })
 
     })
     .config(function ($httpProvider) {
