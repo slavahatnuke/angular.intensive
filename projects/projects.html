@@ -4,5 +4,9 @@
     <div class="panel panel-default">
         <div>{{project.name}}</div>
         <div>{{project.description}}</div>
+        <div>
+            <a class="btn btn-default" ui-sref="app.projects.edit({projectId: project._id})">edit</a>
+            <a class="btn btn-danger" ng-click="remove(project)">delete</a>
+        </div>
     </div>
 </div>

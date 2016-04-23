@@ -38,6 +38,11 @@ angular.module('Tracker', ['ui.router', 'ngResource'])
                 templateUrl: 'projects/edit.html',
                 controller: 'ProjectEditCtrl'
             })
+            .state('app.projects.edit', {
+                url: '/:projectId/edit',
+                templateUrl: 'projects/edit.html',
+                controller: 'ProjectEditCtrl'
+            })
 
     })
     .config(function ($httpProvider) {
