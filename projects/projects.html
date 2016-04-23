@@ -1,14 +1,12 @@
 <a href ui-sref="app.projects.new" class="btn btn-primary">new</a>
 
 <div ng-repeat="project in projects">
-    <div class="panel panel-default">
-        <div>{{project.name}}</div>
-        <div>{{project.description}}</div>
-        <div>
-            <a class="btn btn-default"
-               ui-sref="app.projects.edit({projectId: project._id})">edit</a>
-
-            <a class="btn btn-danger" ng-click="remove(project)">delete</a>
-        </div>
+    <hr/>
+    <div class="pull-right">
+        <a class="btn btn-default" ui-sref="app.projects.edit({projectId: project._id})">Edit</a>
+        <a class="btn btn-danger" ng-click="remove(project)">Delete</a>
     </div>
+    <div>Name: {{project.name}}</div>
+    <div>Description: {{project.description}}</div>
 </div>
+<hr/>
