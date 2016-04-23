@@ -1,4 +1,8 @@
 angular.module('Tracker')
-    .controller('ProjectsCtrl', function ($scope) {
+    .factory('Project', function (resource) {
+        return resource('/api/projects');
+    })
+    .controller('ProjectsCtrl', function ($scope, Project) {
+        $scope.projects = Project.query();
     })
 ;

@@ -25,8 +25,18 @@ angular.module('Tracker', ['ui.router', 'ngResource'])
             })
             .state('app.projects', {
                 url: '/projects',
+                abstract: true,
+                template: '<ui-view/>'
+            })
+            .state('app.projects.list', {
+                url: '/list',
                 templateUrl: 'projects/projects.html',
                 controller: 'ProjectsCtrl'
+            })
+            .state('app.projects.new', {
+                url: '/new',
+                templateUrl: 'projects/edit.html',
+                controller: 'ProjectEditCtrl'
             })
 
     })

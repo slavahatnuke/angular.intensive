@@ -4,7 +4,7 @@ angular.module('Tracker')
 
         $scope.login = function () {
             UserService.login($scope.user).then(function () {
-                $state.go('app.projects');
+                $state.go('app.projects.list');
             });
         }
     })
