@@ -26,7 +26,7 @@ angular.module('Tracker', ['ui.router', 'ngResource'])
             .state('app.projects', {
                 url: '/projects',
                 abstract: true,
-                template: '<ui-view/>'
+                template: '<ui-view></ui-view><ui-view name="workspace"></ui-view>'
             })
             .state('app.projects.list', {
                 url: '/list',
@@ -46,8 +46,16 @@ angular.module('Tracker', ['ui.router', 'ngResource'])
             .state('app.project', {
                 parent: 'app.projects',
                 url: '/:projectId',
-                templateUrl: 'projects/show.html',
-                controller: 'ProjectCtrl'
+                views: {
+                    '': {
+                        templateUrl: 'projects/show.html',
+                        controller: 'ProjectCtrl'
+                    },
+                    'workspace': {
+                        templateUrl: 'tasks/tasks.html',
+                        controller: 'TasksCtrl'
+                    }
+                }
             })
 
     })
