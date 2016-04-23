@@ -1,10 +1,11 @@
-<a class="btn btn-default" ng-click="add()">Add</a>
+<a class="btn btn-default" ng-click="edit()" ng-if="originalTask">Edit</a>
+<a class="btn btn-default" ng-click="add()"ng-if="!originalTask">Add</a>
 
 <form ng-if="showForm" ng-submit="save()">
     <input type="text" placeholder="Name" ng-model="task.name"/>
     <input type="text" placeholder="Description" ng-model="task.description"/>
     <select ng-options="user._id as user.name for user in users" ng-model="task.assigned"></select>
-    <select ng-options="status in statuses" ng-model="task.status"></select>
+    <select ng-options="status for status in statuses" ng-model="task.status"></select>
     <button>save</button>
 </form>
 

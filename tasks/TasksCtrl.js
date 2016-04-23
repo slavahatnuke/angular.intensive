@@ -22,6 +22,8 @@ angular.module('Tracker')
             $scope.tasks = Task.query({projectId: $scope.projectId});
         }
 
+        $scope.load = load;
+
         load();
 
         $scope.remove = function (task) {
@@ -35,22 +37,42 @@ angular.module('Tracker')
             restrict: 'AE',
             scope: {
                 projectId: '=',
-                originalTask: '=task'
+                originalTask: '=task',
+                onComplete: '='
             },
             templateUrl: 'tasks/task-editor.html',
             controller: function ($scope, Task, User) {
-                $scope.add = function () {
-                    $scope.task = new Task();
+                function setup() {
                     $scope.showForm = true;
                     $scope.users = User.query();
                     $scope.statuses = ['new', 'in-progress', 'done'];
+                }
+
+                $scope.add = function () {
+                    $scope.task = new Task();
+                    setup();
                 };
+
+                $scope.edit = function () {
+                    $scope.task = angular.copy($scope.originalTask);
+                    if($scope.task.assigned && $scope.task.assigned._id) {
+                        $scope.task.assigned = $scope.task.assigned._id;
+                    }
+                    setup();
+                };
+
+                function done() {
+                    $scope.onComplete && $scope.onComplete($scope.task);
+                    $scope.showForm = false;
+                }
 
                 $scope.save = function () {
                     var params = {projectId: $scope.projectId};
-                     $scope.task.$save(params).then(function () {
-                        console.log(arguments);
-                    });
+
+                    var promise = $scope.task._id ?
+                        $scope.task.$update() : $scope.task.$save(params);
+
+                    promise.then(done);
                 }
             }
         };

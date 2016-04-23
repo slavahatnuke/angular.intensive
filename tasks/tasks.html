@@ -1,6 +1,4 @@
-<pre>{{tasks}}</pre>
-
-<task-editor project-id="projectId"></task-editor>
+<task-editor project-id="projectId" on-complete="load"></task-editor>
 
 <div ng-repeat="task in tasks">
     <hr/>
@@ -8,7 +6,7 @@
 
         <a class="btn btn-danger" ng-click="remove(task)">Delete</a>
         <a class="btn btn-primary">Show</a>
-        <task-editor task="task"></task-editor>
+        <task-editor task="task" on-complete="load"></task-editor>
     </div>
     <div>Name: {{task.name}}</div>
     <div>Description: {{task.description}}</div>
