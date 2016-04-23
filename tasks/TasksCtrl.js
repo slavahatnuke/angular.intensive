@@ -72,7 +72,9 @@ angular.module('Tracker')
                     var promise = $scope.task._id ?
                         $scope.task.$update() : $scope.task.$save(params);
 
-                    promise.then(done);
+                    promise.then(done).then(function () {
+                        $scope.originalTask = $scope.task;
+                    });
                 }
             }
         };
