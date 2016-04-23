@@ -6,6 +6,7 @@ angular.module('Tracker', ['ui.router', 'ngResource'])
         $stateProvider
             .state('app', {
                 url: '/app',
+                abstract: true,
                 templateUrl: 'Tracker.html'
             })
             .state('app.signup', {
@@ -40,8 +41,13 @@ angular.module('Tracker', ['ui.router', 'ngResource'])
         };
     })
     .run(function ($rootScope, UserService) {
-        UserService.load().then(function (user) {
+        $rootScope.UserService = UserService;
+
+        $rootScope.$watch('UserService.user', function (user) {
             $rootScope.user = user;
         });
+
+        UserService.load();
     })
 ;
+
