@@ -1,6 +1,8 @@
 <a href ui-sref="app.projects.new" class="btn btn-primary">new</a>
 
 <div ng-repeat="project in projects">
-    <div>{{project.name}}</div>
-    <div>{{project.description}}</div>
+    <div class="panel panel-default">
+        <div>{{project.name}}</div>
+        <div>{{project.description}}</div>
+    </div>
 </div>
