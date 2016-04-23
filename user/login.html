@@ -1,6 +1,11 @@
-<pre>{{user}}</pre>
-<form ng-submit="login()">
-    <input type="email" placeholder="email" ng-model="user.email"/>
-    <input type="password" placeholder="password" ng-model="user.password"/>
-    <button class="btn btn-default">login</button>
+<form ng-submit="login()" class="form-inline">
+    <div class="form-group">
+        <label for="InputEmail1">Email address</label>
+        <input ng-model="user.email" type="email" class="form-control" id="InputEmail1" placeholder="Email">
+    </div>
+    <div class="form-group">
+        <label for="InputPassword1">Password</label>
+        <input ng-model="user.password" type="password" class="form-control" id="InputPassword1" placeholder="Password">
+    </div>
+    <button class="btn btn-primary">Login</button>
 </form>
