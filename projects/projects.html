@@ -3,8 +3,11 @@
 <div ng-repeat="project in projects">
     <hr/>
     <div class="pull-right">
-        <a class="btn btn-default" ui-sref="app.projects.edit({projectId: project._id})">Edit</a>
+        <a class="btn btn-default"
+           ui-sref="app.projects.edit({projectId: project._id})">Edit</a>
         <a class="btn btn-danger" ng-click="remove(project)">Delete</a>
+        <a class="btn btn-primary"
+           ui-sref="app.project({projectId: project._id})">Show</a>
     </div>
     <div>Name: {{project.name}}</div>
     <div>Description: {{project.description}}</div>

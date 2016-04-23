@@ -43,6 +43,12 @@ angular.module('Tracker', ['ui.router', 'ngResource'])
                 templateUrl: 'projects/edit.html',
                 controller: 'ProjectEditCtrl'
             })
+            .state('app.project', {
+                parent: 'app.projects',
+                url: '/:projectId',
+                templateUrl: 'projects/show.html',
+                controller: 'ProjectCtrl'
+            })
 
     })
     .config(function ($httpProvider) {
