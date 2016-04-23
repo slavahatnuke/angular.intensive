@@ -13,6 +13,15 @@ angular.module('Tracker', ['ui.router', 'ngResource'])
                 templateUrl: 'user/signup.html',
                 controller: 'SignupCtrl'
             })
+            .state('app.logout', {
+                url: '/logout',
+                controller: 'LogoutCtrl'
+            })
+            .state('app.login', {
+                url: '/login',
+                templateUrl: 'user/login.html',
+                controller: 'LoginCtrl'
+            })
 
     })
     .config(function ($httpProvider) {
