@@ -26,6 +26,10 @@ angular.module('Tracker')
 
         load();
 
+        $scope.addTask = function (task) {
+            $scope.tasks.push(task);
+        };
+
         $scope.remove = function (task) {
             task.$remove().then(function () {
                 load();
@@ -52,6 +56,8 @@ angular.module('Tracker')
                     $scope.task = new Task();
                     setup();
                 };
+
+
 
                 $scope.edit = function () {
                     $scope.task = angular.copy($scope.originalTask);
